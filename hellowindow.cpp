@@ -3,11 +3,14 @@
 
 #include <iostream>
 
-/*
-Compile:
- g++ hellowindow.cpp glad.c -lglfw3 -lGL -lX11 -lXi -lXrandr -ldl -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -o hellowindow
-Execute:
- ./hellowindow
+/* https://learnopengl.com/Getting-started/Hello-Window
+
+ Compile:
+g++ hellowindow.cpp glad.c -lglfw3 -lGL -lX11 -lXi -lXrandr -ldl -lXxf86vm -lXinerama -lXcursor -pthread -o hellowindow
+
+ Execute:
+./hellowindow
+
  */
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
