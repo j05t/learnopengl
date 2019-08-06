@@ -14,6 +14,7 @@ g++ shaders.cpp glad.c -lglfw3 -lGL -lX11 -lXi -lXrandr -ldl -lXxf86vm -lXineram
 #include "shader.h"
 
 #include <iostream>
+#include <cmath>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -104,6 +105,12 @@ int main()
 
         // render the triangle
         ourShader.use();
+
+        float timeValue = glfwGetTime();
+        float offset = (sin(timeValue)/2.0f) + 0.5f;
+        int offsetLocation = glGetUniformLocation(ourShader.ID, "offset");
+        glUniform1f(offsetLocation, offset);
+
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
