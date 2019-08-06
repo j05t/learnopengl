@@ -7,9 +7,11 @@ out vec3 ourColor;
 out vec2 TexCoord;
 out vec4 ourPos;
 
+uniform float scale;
+
 void main()
 {
-	gl_Position = vec4(aPos, 1.0);
+	gl_Position = vec4(aPos.x * scale, aPos.y * (scale + 0.5), aPos.z * scale, 1.0);
 	ourColor = aColor;
     ourPos = gl_Position;
 	TexCoord = vec2(aTexCoord.x, aTexCoord.y);

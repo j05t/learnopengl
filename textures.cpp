@@ -186,6 +186,14 @@ int main()
 
         // render container
         ourShader.use();
+
+
+        // scale factor
+        float timeValue = glfwGetTime();
+        float scale = (sin(timeValue)/2.0f) + 0.5f;
+        int scaleLocation = glGetUniformLocation(ourShader.ID, "scale");
+        ourShader.setFloat("scale", scale);        
+
         ourShader.setFloat("mixFactor", mixFactor);
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -198,6 +206,8 @@ int main()
 
     // optional: de-allocate all resources once they've outlived their purpose:
     // ------------------------------------------------------------------------
+    glDeleteTextures(1, &texture1);
+    glDeleteTextures(1, &texture2);
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
